@@ -21,12 +21,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Java
       - uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Run the Maven verify phase
-        run: mvn --batch-mode --update-snapshots verify
+      - name: run tests
+        run: mvn clean test
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
